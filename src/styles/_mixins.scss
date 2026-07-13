@@ -1,0 +1,42 @@
+@use "tokens" as *;
+
+@mixin section-shell {
+  width: min(calc(100% - 96px), $content-width);
+  margin-inline: auto;
+
+  @include media-tablet {
+    width: min(calc(100% - 48px), $content-width);
+  }
+
+  @include media-mobile {
+    width: min(calc(100% - 32px), $content-width);
+  }
+}
+
+@mixin brass-line {
+  background: linear-gradient(90deg, transparent, $color-brass-light, transparent);
+  height: 1px;
+}
+
+@mixin interactive-line {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    left: 0;
+    height: 1px;
+    background: currentColor;
+    content: "";
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.55s $ease-luxury;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ConceptSection from '../components/ConceptSection.astro';
+import SpaceSection from '../components/SpaceSection.astro';
+import MenuSection from '../components/MenuSection.astro';
+import InformationSection from '../components/InformationSection.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const title = 'Bar 鍵ノ間 | 愛媛県松山市二番町';
+const description = '愛媛県松山市二番町のBar 鍵ノ間。営業時間21:00〜04:00。ご予約はInstagramのDMにて承ります。';
+---
+
+<BaseLayout title={title} description={description}>
+  <SiteHeader />
+  <main class="site-main">
+    <HeroSection />
+    <ConceptSection />
+    <SpaceSection />
+    <MenuSection />
+    <InformationSection />
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+<script>
+  import '../scripts/animations.js';
+</script>

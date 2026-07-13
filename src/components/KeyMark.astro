@@ -1,0 +1,57 @@
+---
+interface Props {
+  className?: string;
+  label?: string;
+}
+
+const { className = '', label = '' } = Astro.props;
+---
+
+<svg class:list={["key-mark", className]} viewBox="0 0 120 320" role={label ? 'img' : 'presentation'} aria-label={label || undefined} aria-hidden={label ? undefined : 'true'}>
+  <circle class="key-mark__orbit key-mark__orbit--outer" cx="60" cy="61" r="47"></circle>
+  <circle class="key-mark__orbit key-mark__orbit--inner" cx="60" cy="61" r="28"></circle>
+  <path class="key-mark__metal" d="M60 89V238"></path>
+  <path class="key-mark__metal" d="M60 176H91V201H76V225H60"></path>
+  <path class="key-mark__tooth" d="M60 236L46 252L60 282L74 252Z"></path>
+  <circle class="key-mark__pin" cx="60" cy="61" r="5"></circle>
+</svg>
+
+<style lang="scss">
+  @use "../styles/tokens" as *;
+
+  .key-mark {
+    display: block;
+    width: 100%;
+    overflow: visible;
+  }
+
+  .key-mark__orbit,
+  .key-mark__metal,
+  .key-mark__tooth {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .key-mark__orbit--outer {
+    stroke-width: 1.5;
+  }
+
+  .key-mark__orbit--inner {
+    stroke-width: 7;
+  }
+
+  .key-mark__metal {
+    stroke-width: 7;
+  }
+
+  .key-mark__tooth {
+    fill: rgba($color-brass, 0.12);
+    stroke-width: 2;
+  }
+
+  .key-mark__pin {
+    fill: currentColor;
+  }
+</style>

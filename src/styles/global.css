@@ -1,0 +1,102 @@
+:root {
+  color-scheme: dark;
+  --page-ink: #090908;
+  --page-paper: #e8e0d1;
+  --page-brass: #b7975a;
+  --page-brass-light: #e5c780;
+  --page-muted: #a99f8d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.site-root {
+  min-width: 320px;
+  scroll-behavior: smooth;
+  background: var(--page-ink);
+}
+
+.site-body {
+  min-width: 320px;
+  overflow-x: hidden;
+  background: var(--page-ink);
+  color: var(--page-paper);
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Noto Serif JP", serif;
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-body.is-menu-open,
+.site-body.is-loading {
+  overflow: hidden;
+}
+
+.site-body ::selection {
+  background: var(--page-brass);
+  color: var(--page-ink);
+}
+
+.site-main {
+  position: relative;
+  overflow: clip;
+}
+
+.site-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-image,
+.site-video {
+  display: block;
+  width: 100%;
+}
+
+.site-button {
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.section-kicker {
+  color: var(--page-brass-light);
+  font-family: "Helvetica Neue", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 6vw, 6.4rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.18;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.no-js-only {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-root {
+    scroll-behavior: auto;
+  }
+}

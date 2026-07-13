@@ -1,0 +1,250 @@
+---
+const instagramUrl = 'https://www.instagram.com/kaginoma_ehime?igsh=NnFubWowaTUzYmxn&utm_source=qr';
+const mapUrl = 'https://www.google.com/maps/search/?api=1&query=%E6%84%9B%E5%AA%9B%E7%9C%8C%E6%9D%BE%E5%B1%B1%E5%B8%82%E4%BA%8C%E7%95%AA%E7%94%BA1%E4%B8%81%E7%9B%AE5-2%20%E5%8F%A4%E5%94%90%E4%BA%BA%E6%98%9F%E9%A4%A89F%E8%A5%BF';
+
+const details = [
+  { label: 'ADDRESS', value: '愛媛県松山市二番町1丁目5-2\n古唐人星館9F西' },
+  { label: 'STATION', value: '勝山町駅' },
+  { label: 'HOURS / WEEKDAY', value: '21:00〜04:00' },
+  { label: 'HOURS / WEEKEND & HOLIDAY', value: '21:00〜04:00' },
+  { label: 'CLOSED', value: '日曜日' },
+  { label: 'SEATS', value: 'カウンター8席、ソファー2席' },
+];
+---
+
+<section class="information" id="information" aria-labelledby="information-title">
+  <div class="information__image-wrap" data-info-image>
+    <img class="information__image site-image" src="/assets/tennai02.jpg" alt="鍵ノ間の店内" width="750" height="1000" loading="lazy" />
+    <div class="information__image-shade"></div>
+  </div>
+
+  <div class="information__panel">
+    <div class="information__heading">
+      <p class="section-kicker" data-reveal>INFORMATION / 04</p>
+      <h2 class="information__title section-title" id="information-title" data-reveal>Bar 鍵ノ間</h2>
+    </div>
+
+    <dl class="information__details">
+      {details.map((detail) => (
+        <div class="information__row" data-info-row>
+          <dt class="information__label">{detail.label}</dt>
+          <dd class="information__value">
+            {detail.value.split('\n').map((line) => <span class="information__value-line">{line}</span>)}
+          </dd>
+        </div>
+      ))}
+    </dl>
+
+    <a class="information__map site-link" href={mapUrl} target="_blank" rel="noreferrer">
+      <span class="information__map-label">Google Maps</span>
+      <svg class="information__icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path class="information__icon-line" d="M5 19 19 5M8 5h11v11"></path>
+      </svg>
+    </a>
+
+    <div class="information__reservation" data-reveal>
+      <p class="information__reservation-kicker">RESERVATION</p>
+      <p class="information__reservation-copy">ご予約はInstagramのDMにて承ります。</p>
+      <a class="information__instagram site-link" href={instagramUrl} target="_blank" rel="noreferrer" data-magnetic>
+        <span class="information__instagram-label">Instagram</span>
+        <svg class="information__instagram-mark" viewBox="0 0 24 24" aria-hidden="true">
+          <rect class="information__instagram-line" x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
+          <circle class="information__instagram-line" cx="12" cy="12" r="4"></circle>
+          <circle class="information__instagram-dot" cx="17.5" cy="6.8" r="1"></circle>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/tokens" as *;
+
+  .information {
+    display: grid;
+    grid-template-columns: 0.84fr 1.16fr;
+    min-height: 100svh;
+    background: $color-ink-soft;
+  }
+
+  .information__image-wrap {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+  }
+
+  .information__image {
+    height: 110%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .information__image-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 52%, $color-ink-soft), linear-gradient(0deg, rgba($color-ink, 0.52), transparent 45%);
+  }
+
+  .information__panel {
+    padding: clamp(90px, 9vw, 150px) clamp(36px, 8vw, 130px);
+  }
+
+  .information__heading {
+    padding-bottom: 58px;
+    border-bottom: 1px solid $color-line;
+  }
+
+  .information__title {
+    margin-top: 26px;
+    font-size: clamp(2.4rem, 4.6vw, 5.4rem);
+  }
+
+  .information__row {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 30px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba($color-paper, 0.12);
+  }
+
+  .information__label {
+    color: $color-brass-light;
+    font-family: $font-sans;
+    font-size: 0.56rem;
+    letter-spacing: 0.16em;
+    line-height: 1.7;
+  }
+
+  .information__value {
+    font-size: 0.88rem;
+    letter-spacing: 0.13em;
+    line-height: 1.9;
+  }
+
+  .information__value-line {
+    display: block;
+  }
+
+  .information__map {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: max-content;
+    margin-top: 28px;
+    color: $color-muted;
+    font-family: $font-sans;
+    transition: color 0.35s ease;
+  }
+
+  .information__map:hover,
+  .information__map:focus-visible {
+    color: $color-brass-light;
+  }
+
+  .information__map-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+  }
+
+  .information__icon {
+    width: 15px;
+  }
+
+  .information__icon-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.2;
+  }
+
+  .information__reservation {
+    margin-top: 76px;
+    padding: 34px;
+    border: 1px solid rgba($color-brass-light, 0.34);
+  }
+
+  .information__reservation-kicker {
+    color: $color-brass-light;
+    font-family: $font-sans;
+    font-size: 0.57rem;
+    letter-spacing: 0.3em;
+  }
+
+  .information__reservation-copy {
+    margin-top: 22px;
+    color: $color-muted;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    line-height: 1.9;
+  }
+
+  .information__instagram {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding: 18px 22px;
+    background: $color-brass-light;
+    color: $color-ink;
+  }
+
+  .information__instagram-label {
+    font-family: $font-sans;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+  }
+
+  .information__instagram-mark {
+    width: 22px;
+  }
+
+  .information__instagram-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.2;
+  }
+
+  .information__instagram-dot {
+    fill: currentColor;
+  }
+
+  @include media-tablet {
+    .information {
+      grid-template-columns: 1fr;
+    }
+
+    .information__image-wrap {
+      height: 72svh;
+    }
+
+    .information__image-shade {
+      background: linear-gradient(0deg, $color-ink-soft, transparent 48%);
+    }
+  }
+
+  @include media-mobile {
+    .information__image-wrap {
+      height: 58svh;
+    }
+
+    .information__panel {
+      padding: 72px 20px 90px;
+    }
+
+    .information__heading {
+      padding-bottom: 38px;
+    }
+
+    .information__row {
+      grid-template-columns: 1fr;
+      gap: 9px;
+      padding-block: 18px;
+    }
+
+    .information__reservation {
+      margin-top: 58px;
+      padding: 26px 20px;
+    }
+  }
+</style>

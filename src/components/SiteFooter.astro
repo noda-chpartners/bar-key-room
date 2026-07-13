@@ -1,0 +1,101 @@
+---
+const instagramUrl = 'https://www.instagram.com/kaginoma_ehime?igsh=NnFubWowaTUzYmxn&utm_source=qr';
+---
+
+<footer class="footer">
+  <div class="footer__keyhole" aria-hidden="true"></div>
+  <div class="footer__inner">
+    <a class="footer__brand site-link" href="#top" aria-label="ページ上部へ戻る">
+      <img class="footer__logo site-image" src="/assets/logo.png" alt="Bar 鍵ノ間" width="100" height="320" loading="lazy" />
+    </a>
+    <div class="footer__meta">
+      <p class="footer__address">愛媛県松山市二番町1丁目5-2 古唐人星館9F西</p>
+      <a class="footer__instagram site-link" href={instagramUrl} target="_blank" rel="noreferrer">Instagram</a>
+    </div>
+    <p class="footer__credit">BAR KAGINOMA</p>
+  </div>
+</footer>
+
+<style lang="scss">
+  @use "../styles/tokens" as *;
+  @use "../styles/mixins" as *;
+
+  .footer {
+    position: relative;
+    padding: clamp(90px, 12vw, 170px) 0 44px;
+    overflow: hidden;
+    border-top: 1px solid rgba($color-brass-light, 0.16);
+    background: $color-ink;
+  }
+
+  .footer__keyhole {
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    width: 280px;
+    height: 420px;
+    border: 1px solid rgba($color-brass-light, 0.1);
+    border-radius: 50% 50% 2px 2px;
+    transform: translateX(-50%);
+  }
+
+  .footer__inner {
+    @include section-shell;
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: end;
+    gap: 48px;
+  }
+
+  .footer__brand {
+    width: 58px;
+  }
+
+  .footer__logo {
+    height: auto;
+  }
+
+  .footer__meta {
+    display: flex;
+    gap: 28px;
+    color: $color-muted;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    line-height: 1.8;
+  }
+
+  .footer__instagram {
+    @include interactive-line;
+    color: $color-brass-light;
+    font-family: $font-sans;
+  }
+
+  .footer__credit {
+    color: rgba($color-paper, 0.36);
+    font-family: $font-sans;
+    font-size: 0.54rem;
+    letter-spacing: 0.28em;
+  }
+
+  @include media-mobile {
+    .footer {
+      padding-top: 80px;
+    }
+
+    .footer__inner {
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: 36px;
+    }
+
+    .footer__brand {
+      width: 44px;
+    }
+
+    .footer__meta {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+</style>

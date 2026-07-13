@@ -1,0 +1,350 @@
+---
+import KeyMark from './KeyMark.astro';
+---
+
+<div class="intro-screen" aria-hidden="true" data-intro>
+  <div class="intro-screen__line"></div>
+  <div class="intro-screen__key" data-intro-key>
+    <KeyMark />
+  </div>
+  <p class="intro-screen__word">KAGINOMA</p>
+</div>
+
+<section class="hero" id="top" aria-labelledby="hero-title" data-hero>
+  <div class="hero__media" data-hero-media>
+    <video class="hero__video site-video" autoplay muted loop playsinline poster="/assets/theater.png" aria-hidden="true">
+      <source src="/assets/sp-movie01.mp4" media="(max-width: 700px)" type="video/mp4" />
+      <source src="/assets/movie01.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__veil"></div>
+    <div class="hero__grain"></div>
+  </div>
+
+  <div class="hero__frame hero__frame--outer"></div>
+  <div class="hero__frame hero__frame--inner"></div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow" data-hero-copy>A KEY TO THE NIGHT</p>
+    <h1 class="hero__title" id="hero-title">
+      <span class="hero__title-line" data-hero-copy>鍵をほどく。</span>
+      <span class="hero__title-line hero__title-line--indent" data-hero-copy>夜がひらく。</span>
+    </h1>
+    <p class="hero__name" data-hero-copy>Bar 鍵ノ間</p>
+  </div>
+
+  <div class="hero__key" data-hero-key>
+    <KeyMark label="鍵" />
+  </div>
+
+  <a class="hero__reserve site-link" href="#information" data-hero-copy>
+    <span class="hero__reserve-label">INFORMATION</span>
+    <span class="hero__reserve-arrow" aria-hidden="true">
+      <svg class="hero__reserve-icon" viewBox="0 0 24 24">
+        <path class="hero__reserve-icon-line" d="M5 5 19 19M19 8v11H8"></path>
+      </svg>
+    </span>
+  </a>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span class="hero__scroll-label">SCROLL TO UNLOCK</span>
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/tokens" as *;
+
+  .intro-screen {
+    position: fixed;
+    z-index: 100;
+    inset: 0;
+    display: grid;
+    overflow: hidden;
+    place-items: center;
+    background: $color-ink;
+    color: $color-brass-light;
+  }
+
+  .intro-screen__line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, rgba($color-brass-light, 0.55), transparent);
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  .intro-screen__key {
+    width: 72px;
+  }
+
+  .intro-screen__word {
+    position: absolute;
+    bottom: 7vh;
+    font-family: $font-sans;
+    font-size: 0.62rem;
+    letter-spacing: 0.52em;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    overflow: hidden;
+    background: $color-ink;
+  }
+
+  .hero__media,
+  .hero__veil,
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero__media {
+    transform: scale(1.08);
+  }
+
+  .hero__video {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__veil {
+    background:
+      linear-gradient(90deg, rgba($color-ink, 0.82), rgba($color-ink, 0.14) 48%, rgba($color-ink, 0.72)),
+      linear-gradient(0deg, rgba($color-ink, 0.74), transparent 44%, rgba($color-ink, 0.5));
+  }
+
+  .hero__grain {
+    opacity: 0.16;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero__frame {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .hero__frame--outer {
+    inset: 18px;
+    border: 1px solid rgba($color-brass-light, 0.34);
+  }
+
+  .hero__frame--inner {
+    inset: 25px;
+    border: 1px solid rgba($color-paper, 0.08);
+  }
+
+  .hero__content {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: clamp(42px, 9vw, 150px);
+    transform: translateY(-50%);
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 28px;
+    color: $color-brass-light;
+    font-family: $font-sans;
+    font-size: 0.62rem;
+    letter-spacing: 0.52em;
+  }
+
+  .hero__title {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(3.1rem, 7.4vw, 8rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1.14;
+    text-shadow: 0 6px 40px rgba($color-ink, 0.55);
+  }
+
+  .hero__title-line {
+    display: block;
+    overflow: hidden;
+  }
+
+  .hero__title-line--indent {
+    margin-left: 0.7em;
+  }
+
+  .hero__name {
+    margin-top: 30px;
+    padding-left: 0.25em;
+    color: rgba($color-paper, 0.74);
+    font-size: 0.8rem;
+    letter-spacing: 0.44em;
+  }
+
+  .hero__key {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: clamp(5vw, 12vw, 180px);
+    width: clamp(66px, 8vw, 120px);
+    color: rgba($color-brass-light, 0.82);
+    filter: drop-shadow(0 12px 34px rgba($color-ink, 0.8));
+    transform: translateY(-50%) rotate(12deg);
+    transform-origin: 50% 19%;
+  }
+
+  .hero__reserve {
+    position: absolute;
+    z-index: 2;
+    right: 48px;
+    bottom: 46px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: $color-paper;
+    font-family: $font-sans;
+  }
+
+  .hero__reserve-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+  }
+
+  .hero__reserve-arrow {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 1px solid rgba($color-brass-light, 0.55);
+    border-radius: 50%;
+    transition: background 0.45s ease, color 0.45s ease, transform 0.45s $ease-luxury;
+  }
+
+  .hero__reserve-icon {
+    width: 17px;
+  }
+
+  .hero__reserve-icon-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.2;
+  }
+
+  .hero__reserve:hover .hero__reserve-arrow,
+  .hero__reserve:focus-visible .hero__reserve-arrow {
+    background: $color-brass-light;
+    color: $color-ink;
+    transform: rotate(-45deg);
+  }
+
+  .hero__scroll {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero__scroll-label {
+    color: rgba($color-paper, 0.65);
+    font-family: $font-sans;
+    font-size: 0.52rem;
+    letter-spacing: 0.26em;
+    writing-mode: vertical-rl;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 70px;
+    overflow: hidden;
+    background: rgba($color-paper, 0.18);
+  }
+
+  .hero__scroll-line::after {
+    display: block;
+    width: 100%;
+    height: 46%;
+    background: $color-brass-light;
+    content: "";
+    animation: scroll-line 2.2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-line {
+    0% { transform: translateY(-120%); }
+    55%, 100% { transform: translateY(230%); }
+  }
+
+  @include media-tablet {
+    .hero__content {
+      top: auto;
+      bottom: 17vh;
+      left: 8vw;
+      transform: none;
+    }
+
+    .hero__key {
+      top: 16vh;
+      right: 12vw;
+      width: 72px;
+      transform: rotate(12deg);
+    }
+
+    .hero__reserve {
+      right: 30px;
+      bottom: 30px;
+    }
+
+    .hero__scroll {
+      display: none;
+    }
+  }
+
+  @include media-mobile {
+    .hero__frame--outer {
+      inset: 10px;
+    }
+
+    .hero__frame--inner {
+      inset: 15px;
+    }
+
+    .hero__content {
+      bottom: 19vh;
+      left: 9vw;
+    }
+
+    .hero__eyebrow {
+      margin-bottom: 20px;
+      font-size: 0.55rem;
+      letter-spacing: 0.34em;
+    }
+
+    .hero__title {
+      font-size: clamp(2.7rem, 14vw, 4.5rem);
+    }
+
+    .hero__name {
+      margin-top: 22px;
+    }
+
+    .hero__reserve-label {
+      display: none;
+    }
+
+    .hero__reserve-arrow {
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__scroll-line::after {
+      animation: none;
+    }
+  }
+</style>

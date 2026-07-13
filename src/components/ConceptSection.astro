@@ -1,0 +1,186 @@
+---
+import KeyMark from './KeyMark.astro';
+---
+
+<section class="concept" id="concept" aria-labelledby="concept-title">
+  <div class="concept__shell">
+    <div class="concept__copy">
+      <p class="section-kicker" data-reveal>CONCEPT / 01</p>
+      <h2 class="concept__title section-title" id="concept-title" data-reveal>
+        扉の先に、<br />夜の余白を。
+      </h2>
+      <p class="concept__text" data-reveal>
+        植物と木の温度に包まれる空間。<br />鍵を開ける、その瞬間から始まります。
+      </p>
+    </div>
+
+    <div class="concept__portal" data-keyhole>
+      <div class="concept__halo concept__halo--outer"></div>
+      <div class="concept__halo concept__halo--inner"></div>
+      <div class="concept__keyhole">
+        <picture class="concept__picture">
+          <source srcset="/assets/sp-iriguti.jpg" media="(max-width: 600px)" />
+          <img class="concept__image site-image" src="/assets/iriguti.png" alt="植物に囲まれた鍵ノ間の入口" width="1536" height="1024" />
+        </picture>
+      </div>
+      <div class="concept__floating-key" data-floating-key>
+        <KeyMark />
+      </div>
+    </div>
+
+    <p class="concept__side-note" aria-hidden="true">TURN THE KEY · ENTER THE NIGHT</p>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/tokens" as *;
+  @use "../styles/mixins" as *;
+
+  .concept {
+    position: relative;
+    padding: clamp(120px, 16vw, 260px) 0;
+    background:
+      radial-gradient(circle at 73% 47%, rgba($color-green, 0.55), transparent 30%),
+      $color-ink;
+  }
+
+  .concept__shell {
+    @include section-shell;
+    position: relative;
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    align-items: center;
+    gap: clamp(48px, 8vw, 130px);
+  }
+
+  .concept__copy {
+    position: relative;
+    z-index: 2;
+  }
+
+  .concept__title {
+    margin-top: 28px;
+  }
+
+  .concept__text {
+    margin-top: 42px;
+    color: $color-muted;
+    font-size: clamp(0.9rem, 1.4vw, 1.08rem);
+    letter-spacing: 0.16em;
+    line-height: 2.3;
+  }
+
+  .concept__portal {
+    position: relative;
+    display: grid;
+    aspect-ratio: 0.78;
+    place-items: center;
+  }
+
+  .concept__halo {
+    position: absolute;
+    border: 1px solid rgba($color-brass-light, 0.22);
+    border-radius: 50% 50% 3px 3px;
+  }
+
+  .concept__halo--outer {
+    inset: 1% 7%;
+  }
+
+  .concept__halo--inner {
+    inset: 7% 13%;
+    border-color: rgba($color-paper, 0.1);
+  }
+
+  .concept__keyhole {
+    position: relative;
+    width: 64%;
+    height: 72%;
+    overflow: hidden;
+    filter: drop-shadow(0 30px 45px rgba($color-ink, 0.72));
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M200 0C89.5 0 0 89.5 0 200c0 70 36 131.6 90.5 167.3L35 600h330l-55.5-232.7C364 331.6 400 270 400 200 400 89.5 310.5 0 200 0Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M200 0C89.5 0 0 89.5 0 200c0 70 36 131.6 90.5 167.3L35 600h330l-55.5-232.7C364 331.6 400 270 400 200 400 89.5 310.5 0 200 0Z'/%3E%3C/svg%3E");
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .concept__picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .concept__image {
+    height: 112%;
+    object-fit: cover;
+    transform: scale(1.08);
+  }
+
+  .concept__keyhole::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 44%, rgba($color-ink, 0.54));
+    content: "";
+  }
+
+  .concept__floating-key {
+    position: absolute;
+    right: -1%;
+    bottom: 6%;
+    width: clamp(52px, 6vw, 90px);
+    color: $color-brass-light;
+    transform: rotate(-38deg);
+    transform-origin: 50% 19%;
+  }
+
+  .concept__side-note {
+    position: absolute;
+    top: 50%;
+    right: -28px;
+    color: rgba($color-paper, 0.3);
+    font-family: $font-sans;
+    font-size: 0.5rem;
+    letter-spacing: 0.32em;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+  }
+
+  @include media-tablet {
+    .concept__shell {
+      grid-template-columns: 1fr;
+    }
+
+    .concept__copy {
+      max-width: 620px;
+    }
+
+    .concept__portal {
+      width: min(100%, 650px);
+      margin-inline: auto;
+    }
+  }
+
+  @include media-mobile {
+    .concept {
+      padding-block: 112px;
+    }
+
+    .concept__text {
+      margin-top: 28px;
+      line-height: 2.1;
+    }
+
+    .concept__portal {
+      width: 112%;
+      margin-left: -6%;
+    }
+
+    .concept__side-note {
+      display: none;
+    }
+  }
+</style>

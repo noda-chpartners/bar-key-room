@@ -1,0 +1,24 @@
+$color-ink: #090908;
+$color-ink-soft: #11100d;
+$color-paper: #e8e0d1;
+$color-muted: #a99f8d;
+$color-brass: #b7975a;
+$color-brass-light: #e5c780;
+$color-green: #26352a;
+$color-line: rgba(229, 199, 128, 0.25);
+$font-serif: "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Noto Serif JP", serif;
+$font-sans: "Helvetica Neue", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+$content-width: 1240px;
+$ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+
+@mixin media-tablet {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin media-mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
+}

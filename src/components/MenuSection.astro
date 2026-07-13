@@ -1,0 +1,293 @@
+---
+const menuUrl = 'https://acrobat.adobe.com/id/urn:aaid:sc:ap:a96f9bd9-8238-4877-941d-2dcbaa242871?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnhs-Ai3pCspS8AOw5JbR8fOXvhxziDD2eVDYGVfkRUO7BC-CkRtCj2Bassvk_aem_pmkgDW82xBSkg_HE4L2UAw';
+
+const menuItems = [
+  { number: '01', name: '鍵ノ間オリジナルお抹茶', price: '¥1,500' },
+  { number: '02', name: 'ハイボール', price: '¥1,000〜' },
+  { number: '03', name: 'カクテル', price: '¥900' },
+  { number: '04', name: '焼酎', price: '¥1,000〜' },
+];
+---
+
+<section class="menu" id="menu" aria-labelledby="menu-title">
+  <div class="menu__ornament" aria-hidden="true"></div>
+  <div class="menu__shell">
+    <div class="menu__heading">
+      <p class="section-kicker" data-reveal>DRINKS / 03</p>
+      <h2 class="menu__title section-title" id="menu-title" data-reveal>宵の一杯。</h2>
+    </div>
+
+    <div class="menu__visuals" data-reveal>
+      <figure class="menu__figure menu__figure--matcha">
+        <picture class="menu__picture">
+          <source srcset="/assets/sp-item01.jpg" media="(max-width: 600px)" />
+          <img class="menu__image site-image" src="/assets/item01.jpg" alt="鍵ノ間の抹茶とドリンク" width="750" height="422" loading="lazy" />
+        </picture>
+      </figure>
+      <figure class="menu__figure menu__figure--bar">
+        <img class="menu__image site-image" src="/assets/item02.jpg" alt="鍵ノ間のボトルが並ぶバーカウンター" width="750" height="562" loading="lazy" />
+      </figure>
+      <span class="menu__visual-index" aria-hidden="true">KEY<br />ROOM</span>
+    </div>
+
+    <div class="menu__list" role="list">
+      {menuItems.map((item) => (
+        <article class="menu__item" role="listitem" data-menu-item>
+          <span class="menu__number">{item.number}</span>
+          <h3 class="menu__name">{item.name}</h3>
+          <span class="menu__dots" aria-hidden="true"></span>
+          <p class="menu__price">{item.price}</p>
+        </article>
+      ))}
+
+      <a class="menu__link site-link" href={menuUrl} target="_blank" rel="noreferrer" data-magnetic>
+        <span class="menu__link-label">メニューを見る</span>
+        <svg class="menu__link-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path class="menu__link-icon-line" d="M5 19 19 5M8 5h11v11"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/tokens" as *;
+  @use "../styles/mixins" as *;
+
+  .menu {
+    position: relative;
+    padding: clamp(130px, 17vw, 260px) 0;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 8% 60%, rgba($color-green, 0.38), transparent 30%),
+      $color-ink;
+  }
+
+  .menu__ornament {
+    position: absolute;
+    top: 0;
+    right: -10vw;
+    width: 45vw;
+    height: 45vw;
+    border: 1px solid rgba($color-brass-light, 0.1);
+    border-radius: 50%;
+  }
+
+  .menu__ornament::before,
+  .menu__ornament::after {
+    position: absolute;
+    inset: 9%;
+    border: 1px solid rgba($color-brass-light, 0.08);
+    border-radius: inherit;
+    content: "";
+  }
+
+  .menu__ornament::after {
+    inset: 20%;
+  }
+
+  .menu__shell {
+    @include section-shell;
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) 1.18fr;
+    gap: clamp(50px, 10vw, 170px);
+  }
+
+  .menu__heading {
+    grid-column: 1 / 3;
+  }
+
+  .menu__title {
+    margin-top: 26px;
+  }
+
+  .menu__visuals {
+    position: relative;
+    align-self: start;
+    height: 640px;
+    margin-top: 30px;
+  }
+
+  .menu__figure {
+    position: absolute;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba($color-ink, 0.48);
+  }
+
+  .menu__figure--matcha {
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 82%;
+    aspect-ratio: 0.86;
+  }
+
+  .menu__figure--bar {
+    right: 0;
+    bottom: 0;
+    width: 62%;
+    aspect-ratio: 0.82;
+  }
+
+  .menu__picture {
+    display: block;
+    height: 100%;
+  }
+
+  .menu__image {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .menu__figure--matcha .menu__image {
+    object-position: center;
+  }
+
+  .menu__visual-index {
+    position: absolute;
+    z-index: 3;
+    right: 4%;
+    top: 8%;
+    color: $color-brass-light;
+    font-family: $font-sans;
+    font-size: 0.5rem;
+    letter-spacing: 0.34em;
+    line-height: 1.8;
+    writing-mode: vertical-rl;
+  }
+
+  .menu__list {
+    align-self: center;
+  }
+
+  .menu__item {
+    display: grid;
+    grid-template-columns: 38px auto 1fr auto;
+    align-items: baseline;
+    gap: 18px;
+    padding: 28px 0;
+    border-bottom: 1px solid $color-line;
+  }
+
+  .menu__number {
+    color: $color-brass-light;
+    font-family: $font-sans;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+  }
+
+  .menu__name {
+    font-size: clamp(1rem, 1.6vw, 1.34rem);
+    font-weight: 400;
+    letter-spacing: 0.11em;
+  }
+
+  .menu__dots {
+    height: 1px;
+    background-image: linear-gradient(90deg, rgba($color-paper, 0.28) 30%, transparent 30%);
+    background-size: 6px 1px;
+  }
+
+  .menu__price {
+    font-family: $font-sans;
+    font-size: 0.86rem;
+    letter-spacing: 0.08em;
+  }
+
+  .menu__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(100%, 360px);
+    margin-top: 58px;
+    margin-left: auto;
+    padding: 24px 28px;
+    border: 1px solid rgba($color-brass-light, 0.48);
+    border-radius: 50%;
+    color: $color-paper;
+    transition: background 0.45s ease, color 0.45s ease;
+  }
+
+  .menu__link:hover,
+  .menu__link:focus-visible {
+    background: $color-brass-light;
+    color: $color-ink;
+  }
+
+  .menu__link-label {
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+  }
+
+  .menu__link-icon {
+    width: 22px;
+  }
+
+  .menu__link-icon-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.2;
+  }
+
+  @include media-tablet {
+    .menu__shell {
+      grid-template-columns: 1fr;
+    }
+
+    .menu__heading {
+      grid-column: 1;
+    }
+
+    .menu__visuals {
+      width: min(100%, 610px);
+      height: 700px;
+      margin-inline: auto;
+    }
+
+    .menu__list {
+      width: min(100%, 720px);
+      margin-inline: auto;
+    }
+  }
+
+  @include media-mobile {
+    .menu {
+      padding-block: 110px;
+    }
+
+    .menu__visuals {
+      height: 480px;
+    }
+
+    .menu__figure--matcha {
+      width: 84%;
+    }
+
+    .menu__item {
+      grid-template-columns: 25px 1fr auto;
+      gap: 10px;
+      padding-block: 24px;
+    }
+
+    .menu__dots {
+      display: none;
+    }
+
+    .menu__name {
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .menu__price {
+      font-size: 0.74rem;
+      white-space: nowrap;
+    }
+
+    .menu__link {
+      margin-top: 44px;
+    }
+  }
+</style>

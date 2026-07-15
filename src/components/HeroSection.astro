@@ -12,10 +12,19 @@ import KeyMark from './KeyMark.astro';
 
 <section class="hero" id="top" aria-labelledby="hero-title" data-hero>
   <div class="hero__media" data-hero-media>
-    <video class="hero__video site-video" autoplay muted loop playsinline poster="/assets/theater.png" aria-hidden="true">
-      <source src="/assets/sp-movie01.mp4" media="(max-width: 700px)" type="video/mp4" />
-      <source src="/assets/movie01.mp4" type="video/mp4" />
-    </video>
+    <video
+      class="hero__video site-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="/assets/theater-poster.jpg"
+      data-video
+      data-video-mobile="/assets/sp-movie01.mp4"
+      data-video-desktop="/assets/movie01.mp4"
+      aria-hidden="true"
+    ></video>
     <div class="hero__veil"></div>
     <div class="hero__grain"></div>
   </div>

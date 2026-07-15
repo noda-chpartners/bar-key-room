@@ -20,12 +20,12 @@ const menuItems = [
     <div class="menu__visuals" data-reveal>
       <figure class="menu__figure menu__figure--matcha">
         <picture class="menu__picture">
-          <source srcset="/assets/sp-item01.jpg" media="(max-width: 600px)" />
-          <img class="menu__image site-image" src="/assets/item01.jpg" alt="鍵ノ間の抹茶とドリンク" width="750" height="422" loading="lazy" />
+          <source srcset="/assets/sp-item01.webp" media="(max-width: 600px)" type="image/webp" />
+          <img class="menu__image site-image" src="/assets/item01.webp" alt="鍵ノ間の抹茶とドリンク" width="750" height="422" loading="lazy" decoding="async" />
         </picture>
       </figure>
       <figure class="menu__figure menu__figure--bar">
-        <img class="menu__image site-image" src="/assets/item02.jpg" alt="鍵ノ間のボトルが並ぶバーカウンター" width="750" height="562" loading="lazy" />
+        <img class="menu__image site-image" src="/assets/item02.webp" alt="鍵ノ間のボトルが並ぶバーカウンター" width="750" height="562" loading="lazy" decoding="async" />
       </figure>
       <span class="menu__visual-index" aria-hidden="true">KEY<br />ROOM</span>
     </div>
@@ -204,7 +204,6 @@ const menuItems = [
     margin-left: auto;
     padding: 24px 28px;
     border: 1px solid rgba($color-brass-light, 0.48);
-    border-radius: 50%;
     color: $color-paper;
     transition: background 0.45s ease, color 0.45s ease;
   }

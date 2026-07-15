@@ -8,28 +8,37 @@
   <div class="space__gallery" data-gallery>
     <figure class="space__figure space__figure--main" data-parallax="-8">
       <picture class="space__picture">
-        <source srcset="/assets/sp-theater.jpg" media="(max-width: 600px)" />
-        <img class="space__image site-image" src="/assets/theater.png" alt="植物の天井とスクリーンがある鍵ノ間の店内" width="1672" height="941" loading="lazy" />
+        <source srcset="/assets/sp-theater.webp" media="(max-width: 600px)" type="image/webp" />
+        <img class="space__image site-image" src="/assets/theater.webp" alt="植物の天井とスクリーンがある鍵ノ間の店内" width="1400" height="788" loading="lazy" decoding="async" />
       </picture>
       <figcaption class="space__caption">THEATER SPACE</figcaption>
     </figure>
 
     <figure class="space__figure space__figure--sub" data-parallax="10">
-      <img class="space__image site-image" src="/assets/tennai.png" alt="ソファー席のある鍵ノ間の店内" width="1448" height="1086" loading="lazy" />
+      <img class="space__image site-image" src="/assets/tennai.webp" alt="ソファー席のある鍵ノ間の店内" width="1000" height="750" loading="lazy" decoding="async" />
       <figcaption class="space__caption">SOFA SPACE</figcaption>
     </figure>
 
     <figure class="space__figure space__figure--detail" data-parallax="-5">
-      <img class="space__image site-image" src="/assets/tennai02.png" alt="鍵ノ間の店内の灯りと植物" width="1672" height="941" loading="lazy" />
+      <img class="space__image site-image" src="/assets/tennai02.webp" alt="鍵ノ間の店内の灯りと植物" width="1400" height="788" loading="lazy" decoding="async" />
       <figcaption class="space__caption">NIGHT INTERIOR</figcaption>
     </figure>
   </div>
 
   <div class="space__movie" data-movie-panel>
-    <video class="space__video site-video" autoplay muted loop playsinline aria-hidden="true">
-      <source src="/assets/sp-movie02.mp4" media="(max-width: 700px)" type="video/mp4" />
-      <source src="/assets/movie02.mp4" type="video/mp4" />
-    </video>
+    <video
+      class="space__video site-video"
+      muted
+      loop
+      playsinline
+      preload="none"
+      poster="/assets/theater-poster.jpg"
+      data-video
+      data-video-lazy
+      data-video-mobile="/assets/sp-movie02.mp4"
+      data-video-desktop="/assets/movie02.mp4"
+      aria-hidden="true"
+    ></video>
     <div class="space__movie-shade"></div>
     <p class="space__movie-copy" data-reveal>夜の鍵を、<br />ゆっくりと回す。</p>
   </div>
@@ -70,7 +79,7 @@
   }
 
   .space__title {
-    font-size: clamp(2.8rem, 5.7vw, 6rem);
+    font-size: clamp(1.9rem, 3.8vw, 3.4rem);
   }
 
   .space__lead {
@@ -170,7 +179,7 @@
     top: 50%;
     left: clamp(8vw, 14vw, 220px);
     color: $color-paper;
-    font-size: clamp(2.5rem, 6.4vw, 7rem);
+    font-size: clamp(1.7rem, 4.2vw, 3.6rem);
     font-weight: 400;
     letter-spacing: 0.1em;
     line-height: 1.35;

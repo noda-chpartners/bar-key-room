@@ -198,6 +198,8 @@ if (!reduceMotion) {
   });
 
   document.querySelectorAll('[data-magnetic]').forEach((element) => {
+    if (!(element instanceof HTMLElement)) return;
+
     element.addEventListener('pointermove', (event) => {
       const bounds = element.getBoundingClientRect();
       const x = event.clientX - bounds.left - bounds.width / 2;
@@ -211,6 +213,7 @@ if (!reduceMotion) {
   });
 }
 
+/** @param {HTMLVideoElement} video */
 const pickVideoSrc = (video) => {
   const mobile = video.dataset.videoMobile;
   const desktop = video.dataset.videoDesktop;
@@ -218,6 +221,7 @@ const pickVideoSrc = (video) => {
   return window.matchMedia('(max-width: 700px)').matches ? mobile : desktop;
 };
 
+/** @param {HTMLVideoElement} video */
 const loadVideoSource = (video) => {
   const src = pickVideoSrc(video);
   if (!src || video.dataset.currentSrc === src) return;
@@ -226,11 +230,13 @@ const loadVideoSource = (video) => {
   video.load();
 };
 
+/** @param {HTMLVideoElement} video */
 const playVideo = (video) => {
   video.play().catch(() => {});
 };
 
 document.querySelectorAll('[data-video]:not([data-video-lazy])').forEach((video) => {
+  if (!(video instanceof HTMLVideoElement)) return;
   loadVideoSource(video);
   if (video.hasAttribute('autoplay')) playVideo(video);
 });
@@ -241,6 +247,7 @@ if (lazyVideos.length) {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       const video = entry.target;
+      if (!(video instanceof HTMLVideoElement)) return;
       loadVideoSource(video);
       playVideo(video);
       videoObserver.unobserve(video);

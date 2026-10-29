@@ -12,7 +12,7 @@ interface Props {
 const {
   title,
   description,
-  keywords = 'Bar 鍵ノ間,かぎのま,松山 バー,二番町 バー,愛媛 バー,隠れ家バー,松山市',
+  keywords = 'Bar サンプル,隠れ家バー,サンプル',
   ogImage = '/assets/ogp.png',
   noindex = false,
 } = Astro.props;
@@ -20,7 +20,7 @@ const {
 const site = Astro.site ?? Astro.url;
 const canonicalURL = new URL(Astro.url.pathname, site);
 const ogImageURL = new URL(ogImage, site);
-const siteName = 'Bar 鍵ノ間';
+const siteName = 'Bar サンプル';
 const locale = 'ja_JP';
 const robots = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
 
@@ -40,28 +40,28 @@ const structuredData = {
       '@type': 'BarOrPub',
       '@id': `${canonicalURL.origin}/#bar`,
       name: siteName,
-      alternateName: ['かぎのま', 'Bar Kaginoma', '鍵ノ間'],
+      alternateName: ['サンプル', 'Bar Sample'],
       description,
       url: canonicalURL.href,
       image: ogImageURL.href,
       priceRange: '¥¥',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: '二番町1丁目5-2 古唐人星館9F西',
-        addressLocality: '松山市',
-        addressRegion: '愛媛県',
+        streetAddress: 'サンプル町1-2-3 サンプルビル1F',
+        addressLocality: 'サンプル市',
+        addressRegion: 'サンプル県',
         addressCountry: 'JP',
       },
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-          opens: '21:00',
-          closes: '04:00',
+          dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+          opens: '18:00',
+          closes: '23:00',
         },
       ],
-      sameAs: ['https://www.instagram.com/kaginoma_ehime/'],
-      hasMap: 'https://www.google.com/maps/search/?api=1&query=%E6%84%9B%E5%AA%9B%E7%9C%8C%E6%9D%BE%E5%B1%B1%E5%B8%82%E4%BA%8C%E7%95%AA%E7%94%BA1%E4%B8%81%E7%9B%AE5-2%20%E5%8F%A4%E5%94%90%E4%BA%BA%E6%98%9F%E9%A4%A89F%E8%A5%BF',
+      sameAs: ['#'],
+      hasMap: '#',
     },
   ],
 };
@@ -83,8 +83,6 @@ const structuredData = {
     <meta name="theme-color" content="#090908" />
     <meta name="color-scheme" content="dark" />
     <link rel="canonical" href={canonicalURL.href} />
-    <meta name="google-site-verification" content="W6X3cwCqNwAUejsnK3WonJ1538dIruj4tj0PKa2gu5U" />
-
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={locale} />
     <meta property="og:site_name" content={siteName} />
